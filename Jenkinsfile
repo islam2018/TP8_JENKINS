@@ -3,14 +3,12 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'gradle build'
-        sh 'gradle javadoc'
-        sh 'gradle jar'
+        bat 'gradle build'
       }
     }
     stage('Mail Notification') {
       steps {
-        mail(to: 'fm_bouayache@esi.dz', subject: 'Notification Build', body: 'Build réussi')
+        mail(to: 'fm_bouayache@esi.dz', subject: 'Notification Build', body: 'Build rÃ©ussi')
       }
     }
     stage('Code Analysis') {
