@@ -17,8 +17,6 @@ plugins {
 apply plugin: 'java'
 
 dependencies {
-  
-    
    
 }
 

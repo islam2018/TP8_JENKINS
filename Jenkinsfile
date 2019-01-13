@@ -29,7 +29,7 @@ pipeline {
     }
     stage('Deployement') {
       steps {
-        sh 'gradle uploadArchives'
+        bat 'gradle uploadArchives'
       }
     }
     stage('Slack Notification') {
