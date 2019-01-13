@@ -30,9 +30,6 @@ repositories {
 }
 
 
-
-
-
 task generateMatrixAPI(type:Copy) {
 	
 	dependsOn "build"
