@@ -13,9 +13,8 @@ pipeline {
         mail(to: 'fm_bouayache@esi.dz', subject: 'Notification Build', body: 'Build reuussi')
       }
     }
+   
     stage('Code Analysis') {
-      parallel {
-        stage('Code Analysis') {
           steps {
             withSonarQubeEnv('http://localhost:9000') {
 				bat 'sonar-scanner'
@@ -23,13 +22,13 @@ pipeline {
 			waitForQualityGate abortPipeline:true
           }
         }
-        stage('Test Reporting') {
+    stage('Test Reporting') {
           steps {
             jacoco(maximumBranchCoverage: '70')
           }
         }
-      }
-    }
+      
+    
     stage('Deployement') {
       steps {
         bat 'gradle uploadArchives'
