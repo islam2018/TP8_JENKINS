@@ -17,12 +17,15 @@ pipeline {
       parallel {
         stage('Code Analysis') {
           steps {
-            waitForQualityGate true
+            withSonarQubeEnv('http://localhost:9000') {
+				bat 'sonar-scanner'
+			}
+			waitForQualityGate abortPipeline:true
           }
         }
         stage('Test Reporting') {
           steps {
-            jacoco()
+            jacoco(maximumBranchCoverage: '70')
           }
         }
       }
