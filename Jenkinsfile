@@ -18,9 +18,10 @@ pipeline {
         stage('Code Analysis') {
           steps {
             withSonarQubeEnv('http://localhost:9000') {
-				bat 'sonar-scanner'
-			}
-			waitForQualityGate abortPipeline:true
+              bat 'sonar-scanner'
+            }
+
+            waitForQualityGate true
           }
         }
         stage('Test Reporting') {
